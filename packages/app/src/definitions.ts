@@ -5,5 +5,15 @@ declare module '@capacitor/core' {
 }
 
 export interface FirebaseAppPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  initFirebase(options: FirebaseInitConfig): Promise<boolean>;
+}
+
+export interface FirebaseInitConfig {
+  apiKey: string;
+  authDomain: string;
+  databaseURL: string;
+  projectId: string;
+  storageBucket: string;
+  messagingSenderId: string;
+  appId: string;
 }
