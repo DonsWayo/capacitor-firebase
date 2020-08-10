@@ -9,6 +9,7 @@ end
 
 target 'Plugin' do
   capacitor_pods
+  pod 'Firebase/Analytics'
 end
 
 target 'PluginTests' do

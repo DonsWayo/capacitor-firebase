@@ -17,6 +17,7 @@ export class FirebaseAppWeb extends WebPlugin implements FirebaseAppPlugin {
   }
 
   async initFirebase(config: FirebaseInitConfig): Promise<boolean> {
+    console.log('Init App')
     try {
       await this.addFirebaseScript();
       return new Promise((resolve, reject) => {
@@ -29,7 +30,7 @@ export class FirebaseAppWeb extends WebPlugin implements FirebaseAppPlugin {
       });
     } catch (error) {
       console.log(error);
-      return(false);
+      return false;
     }
   }
 

@@ -2,5 +2,8 @@
 include ':capacitor-android'
 project(':capacitor-android').projectDir = new File('../node_modules/@capacitor/android/capacitor')
 
+include ':capacitor-plugin-firebase-analytics'
+project(':capacitor-plugin-firebase-analytics').projectDir = new File('../node_modules/@capacitor-plugin-firebase/analytics/android')
+
 include ':capacitor-plugin-firebase-app'
 project(':capacitor-plugin-firebase-app').projectDir = new File('../node_modules/@capacitor-plugin-firebase/app/android')

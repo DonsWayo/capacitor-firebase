@@ -22,28 +22,33 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 import "@capacitor-plugin-firebase/app";
-
+import "@capacitor-plugin-firebase/analytics";
 import { Plugins } from "@capacitor/core";
 
 
 /* Theme variables */
 import './theme/variables.css';
 
-const { FirebaseApp } = Plugins;
+const { FirebaseApp, FirebaseAnalytics } = Plugins;
 
 const App: React.FC = () => {
 
-  useEffect(() => {
-    console.log(process.env)
-    FirebaseApp.initFirebase({
-      apiKey: process.env.REACT_APP_apiKey,
-      authDomain: process.env.REACT_APP_authDomain,
-      databaseURL: process.env.REACT_APP_databaseURL,
-      projectId: process.env.REACT_APP_projectId,
-      storageBucket: process.env.REACT_APP_storageBucket,
-      messagingSenderId: process.env.REACT_APP_messagingSenderId,
-      appId: process.env.REACT_APP_appId
+  async function init() {
+    await FirebaseApp.initFirebase({
+      apiKey: process.env.REACT_APP_apiKey || "",
+      authDomain: process.env.REACT_APP_authDomain || "",
+      databaseURL: process.env.REACT_APP_databaseURL || "",
+      projectId: process.env.REACT_APP_projectId || "",
+      storageBucket: process.env.REACT_APP_storageBucket || "",
+      messagingSenderId: process.env.REACT_APP_messagingSenderId || "",
+      appId: process.env.REACT_APP_appId || "",
+      measurementId: process.env.REACT_APP_measurementId || ""
     });
+    FirebaseAnalytics.initAnalytics();
+  }
+
+  useEffect(() => {
+    init();
   }, [])
 
   return (
@@ -53,7 +58,7 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/page/:name" component={Page} exact />
-            <Redirect from="/" to="/page/Inbox" exact />
+            <Redirect from="/" to="/page/Analytics" exact />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
