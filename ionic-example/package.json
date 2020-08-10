@@ -5,6 +5,7 @@
   "dependencies": {
     "@capacitor-plugin-firebase/analytics": "file:../packages/analytics",
     "@capacitor-plugin-firebase/app": "file:../packages/app",
+    "@capacitor-plugin-firebase/storage": "file:../packages/storage",
     "@capacitor/android": "^2.4.0",
     "@capacitor/core": "2.4.0",
     "@capacitor/ios": "^2.4.0",

@@ -1,6 +1,7 @@
 import React from 'react';
 import './ExploreContainer.css';
 import AnalyticsContainer from './AnalyticsContainer';
+import StorageContainer from './StorageContainer';
 
 interface ContainerProps {
   name: string;
@@ -11,7 +12,13 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
     return (
       <AnalyticsContainer/>
     );
-  } else {
+  } 
+  if(name === 'Storage') {
+    return (
+      <StorageContainer/>
+    );
+  }
+  else {
     return (
       <div className="container">
         <strong>{name}</strong>
