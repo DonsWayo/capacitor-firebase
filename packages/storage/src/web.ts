@@ -15,17 +15,29 @@ export class FirebaseStorageWeb extends WebPlugin implements FirebaseStoragePlug
     });
   }
 
+  downloadFile(options: { filePath: string; fileRef: string; }): Promise<any> {
+    return new Promise((reject) => {
+      reject("On web use getDownloadUrl")
+    });
+  }
+
+  uploadFile(options: { filePath: string; fileRef: string; }): Promise<any> {
+    return new Promise((reject) => {
+      reject("On web use the uploadFileWeb, supports File and Blod")
+    });
+  }
+
   async echo(options: { value: string }): Promise<{ value: string }> {
     console.log('ECHO', options);
     return options;
   }
 
-  async getDownloadUrl(ref: string) {
+  async getDownloadUrl(ref: string): Promise<{ url: string }> {
     try {
       return new Promise(async (resolve) => {
         const storageRef = this.storage.ref();
         const url = await storageRef.child(ref).getDownloadURL();
-        resolve(url);
+        resolve({url});
       })
     } catch (error) {
       return error;
@@ -33,7 +45,7 @@ export class FirebaseStorageWeb extends WebPlugin implements FirebaseStoragePlug
   }
 
 
-  async uploadFile(options: { ref: string, file: File | Blob }) {
+  async uploadFileWeb(options: { ref: string, file: File | Blob }) {
     try {
       return new Promise(async (resolve) => {
         const { ref, file } = options;
