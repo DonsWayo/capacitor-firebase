@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target  = '11.0'
   s.dependency 'Capacitor'
   s.dependency 'Firebase/Firestore'
+  s.dependency 'FirebaseFirestoreSwift'
   s.swift_version = '5.1'
   s.static_framework = true
 end

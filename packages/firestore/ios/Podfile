@@ -10,6 +10,7 @@ end
 target 'Plugin' do
   capacitor_pods
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 end
 
 target 'PluginTests' do
