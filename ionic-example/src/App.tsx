@@ -24,13 +24,14 @@ import '@ionic/react/css/display.css';
 import "@capacitor-plugin-firebase/app";
 import "@capacitor-plugin-firebase/analytics";
 import "@capacitor-plugin-firebase/storage";
+import "@capacitor-plugin-firebase/firestore";
 import { Plugins } from "@capacitor/core";
 
 
 /* Theme variables */
 import './theme/variables.css';
 
-const { FirebaseApp, FirebaseAnalytics, FirebaseStorage } = Plugins;
+const { FirebaseApp, FirebaseAnalytics, FirebaseStorage, FirebaseFirestore } = Plugins;
 
 const App: React.FC = () => {
 
@@ -47,6 +48,7 @@ const App: React.FC = () => {
     });
     FirebaseAnalytics.initAnalytics();
     FirebaseStorage.initStorage();
+    FirebaseFirestore.initFirestore();
   }
 
   useEffect(() => {

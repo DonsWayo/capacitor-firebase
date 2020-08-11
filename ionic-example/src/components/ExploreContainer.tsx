@@ -2,15 +2,22 @@ import React from 'react';
 import './ExploreContainer.css';
 import AnalyticsContainer from './AnalyticsContainer';
 import StorageContainer from './StorageContainer';
+import FirestoreContainer from './FirestoreContainer';
 
 interface ContainerProps {
   name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+  console.log(name)
   if(name === 'Analytics') {
     return (
       <AnalyticsContainer/>
+    );
+  } 
+  if(name === 'Firestore') {
+    return (
+      <FirestoreContainer/>
     );
   } 
   if(name === 'Storage') {

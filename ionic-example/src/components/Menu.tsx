@@ -36,8 +36,8 @@ const appPages: AppPage[] = [
     mdIcon: paperPlaneSharp
   },
   {
-    title: 'Favorites',
-    url: '/page/Favorites',
+    title: 'Firestore',
+    url: '/page/Firestore',
     iosIcon: heartOutline,
     mdIcon: heartSharp
   },
