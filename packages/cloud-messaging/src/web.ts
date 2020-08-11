@@ -14,6 +14,12 @@ export class FirebaseCloudMessagingWeb extends WebPlugin implements FirebaseClou
       platforms: ['web'],
     });
   }
+  subscribeToTopic(options: { name: string; }): Promise<{ message: string; }> {
+    return new Promise((reject) => {reject({message: "Not supported on web"})});
+  }
+  unsubscribeFromTopic(options: { name: string; }): Promise<{ message: string; }> {
+    return new Promise((reject) => {reject({message: "Not supported on web"})});
+  }
 
   async echo(options: { value: string }): Promise<{ value: string }> {
     console.log('ECHO', options);

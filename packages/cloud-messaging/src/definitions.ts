@@ -6,4 +6,7 @@ declare module '@capacitor/core' {
 
 export interface FirebaseCloudMessagingPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
+  subscribeToTopic(options: { name: string }): Promise<{ message: string }>;
+  unsubscribeFromTopic(options: { name: string }): Promise<{ message: string }>;
+  getToken(): Promise<{ token: string }>;
 }
