@@ -54,7 +54,11 @@ public class FirebaseAuth: CAPPlugin {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             print(auth)
             print(user as Any)
-          self.bridge.triggerDocumentJSEvent(eventName: "onAuthStateChanged", data: "auth")
+            if user != nil {
+                let convertUser = "\(String(describing: user))"
+                self.bridge.triggerDocumentJSEvent(eventName: "onAuthStateChanged", data: convertUser)
+            }
+            self.bridge.triggerDocumentJSEvent(eventName: "onAuthStateChanged", data: "null")
         }
     }
 }
