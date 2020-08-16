@@ -7,3 +7,12 @@ project(':capacitor-plugin-firebase-analytics').projectDir = new File('../node_m
 
 include ':capacitor-plugin-firebase-app'
 project(':capacitor-plugin-firebase-app').projectDir = new File('../node_modules/@capacitor-plugin-firebase/app/android')
+
+include ':capacitor-plugin-firebase-auth'
+project(':capacitor-plugin-firebase-auth').projectDir = new File('../node_modules/@capacitor-plugin-firebase/auth/android')
+
+include ':capacitor-plugin-firebase-firestore'
+project(':capacitor-plugin-firebase-firestore').projectDir = new File('../node_modules/@capacitor-plugin-firebase/firestore/android')
+
+include ':capacitor-plugin-firebase-storage'
+project(':capacitor-plugin-firebase-storage').projectDir = new File('../node_modules/@capacitor-plugin-firebase/storage/android')
