@@ -13,7 +13,7 @@ const StorageContainer: React.FC = () => {
 
     async function onChangeFile(e: any) {
        const file = e.target.files[0];
-       const image = await FirebaseStorage.uploadFile({ref: 'images/file.png', file});
+       const image = await FirebaseStorage.uploadFileWeb({ref: 'images/file.png', file});
        console.log(image);
     }
     return (

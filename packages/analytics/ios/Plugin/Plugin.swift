@@ -9,11 +9,8 @@ import FirebaseAnalytics
 @objc(FirebaseAnalytics)
 public class FirebaseAnalytics: CAPPlugin {
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.success([
-            "value": value
-        ])
+    @objc func initAnalytics(_ call: CAPPluginCall) {
+        call.success()
     }
 
     @objc func setUserID(_ call: CAPPluginCall) {

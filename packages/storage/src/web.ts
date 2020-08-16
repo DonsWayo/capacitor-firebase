@@ -15,12 +15,13 @@ export class FirebaseStorageWeb extends WebPlugin implements FirebaseStoragePlug
     });
   }
 
+  //@ts-ignore
   downloadFile(options: { filePath: string; fileRef: string; }): Promise<any> {
     return new Promise((reject) => {
       reject("On web use getDownloadUrl")
     });
   }
-
+  //@ts-ignore
   uploadFile(options: { filePath: string; fileRef: string; }): Promise<any> {
     return new Promise((reject) => {
       reject("On web use the uploadFileWeb, supports File and Blod")

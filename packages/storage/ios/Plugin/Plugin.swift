@@ -12,11 +12,8 @@ public class FirebaseStorage: CAPPlugin{
     let storage = Storage.storage()
 
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.success([
-            "value": value
-        ])
+    @objc func initStorage(_ call: CAPPluginCall) {
+        call.success()
     }
     
     @objc func getDownloadUrl(_ call: CAPPluginCall) {

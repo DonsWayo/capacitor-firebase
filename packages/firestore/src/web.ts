@@ -29,8 +29,13 @@ export class FirebaseFirestoreWeb extends WebPlugin implements FirebaseFirestore
   async getDocuments(options: { collection: string, where?: Where, order?: Order, limit?: number }) {
       const { collection, where, order, limit } = options;
       console.log(options);
+      let docs: any = [];
       if(collection && !where && !order && !limit){
-        return await this.firestore.collection(collection).get();
+        const getDocs = await this.firestore.collection(collection).get();
+        getDocs.forEach(function(doc: any) {
+          docs.push(doc.data());
+        });
+        return {"docs": docs}
       }
       if(collection && where && !order && !limit) {
         return await this.firestore.collection(collection).where(where.value, where.compare, where.on).get();

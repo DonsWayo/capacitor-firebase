@@ -13,17 +13,14 @@ const FirestoreContainer: React.FC = () => {
 
   async function getDocs() {
     try {
-      const doc = await FirebaseFirestore.getDocuments(
+      const docs = await FirebaseFirestore.getDocuments(
         { collection: "pepe", 
+/*        NOT WORK FOR NOW!
           where: {value: 'name', compare: '==', on: 'lola'} ,
           order: {by: "name", descending: true},
-          limit: 2
+          limit: 2 */
       });
-      if(doc) {
-        doc.forEach((doc: any) => {
-          console.log(doc.data());
-        });
-      }
+      console.log(docs)
     } catch (error) {
       console.log(error);
     }
