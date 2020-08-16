@@ -8,10 +8,33 @@ export class FirebaseCrashlyticsWeb extends WebPlugin implements FirebaseCrashly
       platforms: ['web'],
     });
   }
-
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  initCrashlytics(): Promise<any> {
+    return new Promise((reject) => {
+      reject("Crashlytics not work on web")
+    });
+  }
+  //@ts-ignore
+  logMessage(options: { message: string; }): Promise<void | string> {
+    return new Promise((reject) => {
+      reject("Crashlytics not work on web")
+    });
+  }
+  //@ts-ignore
+  setUserId(options: { userId: string; }): Promise<void | string> {
+    return new Promise((reject) => {
+      reject("Crashlytics not work on web")
+    });
+  }
+  testCrash(): Promise<void | string> {
+    return new Promise((reject) => {
+      reject("Crashlytics not work on web")
+    });
+  }
+  //@ts-ignore
+  setCustomValue(options: { forKey: string; value: any; type?: string | undefined; }): Promise<void | string> {
+    return new Promise((reject) => {
+      reject("Crashlytics not work on web")
+    });;
   }
 }
 

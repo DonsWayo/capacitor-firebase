@@ -44,15 +44,17 @@ public class FirebaseCrashlytics extends Plugin {
     @PluginMethod
     public void setCustomValue(PluginCall call) throws JSONException {
         JSObject options = call.getObject("options");
-        String type = call.getString("type");
+        String type;
 
         if (options == null) {
             call.error("options are missing!");
             return;
         }
 
-        if(type == null ) {
+        if(options.getString("type") == null ) {
             type = "string";
+        } else {
+            type = options.getString("type");
         }
 
         switch (type) {

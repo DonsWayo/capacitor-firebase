@@ -5,5 +5,9 @@ declare module '@capacitor/core' {
 }
 
 export interface FirebaseCrashlyticsPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  initCrashlytics(): Promise<any>
+  logMessage(options: { message: string }): Promise<void | string>;
+  setUserId(options: { userId: string }): Promise<void | string>;
+  testCrash(): Promise<void | string>;
+  setCustomValue(options: { forKey: string; value: any; type?: string; }): Promise<void | string>;
 }
