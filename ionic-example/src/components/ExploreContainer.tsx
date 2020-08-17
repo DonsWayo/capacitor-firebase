@@ -1,5 +1,4 @@
 import React from 'react';
-import './ExploreContainer.css';
 import AnalyticsContainer from './AnalyticsContainer';
 import StorageContainer from './StorageContainer';
 import FirestoreContainer from './FirestoreContainer';
