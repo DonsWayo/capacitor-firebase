@@ -1,6 +1,9 @@
 {
     "name": "capacitor-firebase",
     "private": true,
+    "scripts": {
+      "deploy:docs": "yarn && cd docs && yarn build"
+    },
     "devDependencies": {
       "typescript": "^3.8.3"
     },
