@@ -1,6 +1,4 @@
-# Crashlytics 
-
-## Installation
+# Installation
 
 This module requires that the `@capacitor-plugin-firebase/app` module is already setup and installed. To install the "app" module, view the
 [Getting Started](/) documentation.
