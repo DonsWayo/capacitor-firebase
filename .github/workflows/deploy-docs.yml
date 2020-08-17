@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Deploy docs
 on: [push]
 jobs:
   build-and-deploy:
@@ -13,5 +13,5 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_REPO: DonsWayo/capacitor-firebase
         TARGET_BRANCH: master
-        BUILD_SCRIPT: yarn && yarn build
-        BUILD_DIR: docs/.vuepress/dist/
+        BUILD_SCRIPT: yarn deploy:docs
+        BUILD_DIR: docs/docs/.vuepress/dist/
