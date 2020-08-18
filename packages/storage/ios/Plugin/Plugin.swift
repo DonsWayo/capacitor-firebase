@@ -38,7 +38,7 @@ public class FirebaseStorage: CAPPlugin{
         let filePath = call.getString("filePath") ?? nil
         let fileRef = call.getString("fileRef") ?? nil
         
-        if(filePath != nil || fileRef != nil) {
+        if(filePath == nil || fileRef == nil) {
             call.error("filePath or fileRef is missing")
         }
 
@@ -63,7 +63,7 @@ public class FirebaseStorage: CAPPlugin{
         let filePath = call.getString("filePath") ?? nil
         let fileRef = call.getString("fileRef") ?? nil
         
-        if(filePath != nil || fileRef != nil) {
+        if(filePath == nil || fileRef == nil) {
             call.error("filePath or fileRef is missing")
         }
 

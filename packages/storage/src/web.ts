@@ -51,7 +51,6 @@ export class FirebaseStorageWeb extends WebPlugin implements FirebaseStoragePlug
       return new Promise(async (resolve) => {
         const { ref, file } = options;
         const storageRef = this.storage.ref();
-        console.log(ref);
         const uploadTask = storageRef.child(ref).put(file);
         uploadTask.on('state_changed', (snapshot: any) => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -65,7 +64,6 @@ export class FirebaseStorageWeb extends WebPlugin implements FirebaseStoragePlug
               break;
             }
         })
-        console.log(uploadTask);
         resolve(uploadTask)
       })
     }
