@@ -1,21 +1,21 @@
 {
-    "name": "capacitor-firebase",
-    "private": true,
-    "scripts": {
-      "deploy:docs": "yarn && cd docs && yarn build"
-    },
-    "devDependencies": {
-      "typescript": "^3.8.3"
-    },
-    "workspaces": {
-      "packages": [
-        "packages/*"
-      ],
-      "nohoist": [
-        "**/react",
-        "**/react/**",
-        "**/capacitor",
-        "**/capacitor/**"
-      ]
-    }
+  "name": "capacitor-firebase",
+  "private": true,
+  "scripts": {
+    "deploy:docs": "yarn && cd docs && yarn build"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react",
+      "**/react/**",
+      "**/capacitor",
+      "**/capacitor/**"
+    ]
   }
+}

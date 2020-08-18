@@ -13,6 +13,7 @@ def capacitor_pods
   pod 'CapacitorPluginFirebaseAnalytics', :path => '../../../packages/analytics'
   pod 'CapacitorPluginFirebaseApp', :path => '../../../packages/app'
   pod 'CapacitorPluginFirebaseAuth', :path => '../../../packages/auth'
+  pod 'CapacitorPluginFirebaseCrashlytics', :path => '../../../packages/crashlytics'
   pod 'CapacitorPluginFirebaseFirestore', :path => '../../../packages/firestore'
   pod 'CapacitorPluginFirebaseStorage', :path => '../../../packages/storage'
   # Do not delete

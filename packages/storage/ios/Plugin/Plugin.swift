@@ -8,10 +8,10 @@ import FirebaseStorage
  */
 @objc(FirebaseStorage)
 public class FirebaseStorage: CAPPlugin{
-
+    
     let storage = Storage.storage()
-
-
+    
+    
     @objc func initStorage(_ call: CAPPluginCall) {
         call.success()
     }
@@ -19,15 +19,15 @@ public class FirebaseStorage: CAPPlugin{
     @objc func getDownloadUrl(_ call: CAPPluginCall) {
         let ref = call.getString("ref") ?? nil
         let storageRef = storage.reference()
-
+        
         if ref != nil {
             let downloadRef = storageRef.child(ref!)
             downloadRef.downloadURL { url, error in
-              if let error = error {
-                call.error(error.localizedDescription)
-              } else {
-                call.success(["url": url as Any])
-              }
+                if let error = error {
+                    call.error(error.localizedDescription)
+                } else {
+                    call.success(["url": url as Any])
+                }
             }
         } else {
             call.error("Ref is missing")
@@ -41,21 +41,24 @@ public class FirebaseStorage: CAPPlugin{
         if(filePath == nil || fileRef == nil) {
             call.error("filePath or fileRef is missing")
         }
-
+        
         let storageRef = storage.reference()
-
+        
         // File located on disk
         let localFile = URL(string: filePath!)!
-
+        
         // Create a reference to the file you want to upload
         let riversRef = storageRef.child(fileRef!)
         
         riversRef.putFile(from: localFile, metadata: nil) { metadata, error in
-          guard let metadata = metadata else {
-            call.error(error!.localizedDescription)
-            return
-          }
-            call.success(["success": metadata])
+            
+            if let error = error {
+                call.error(error.localizedDescription)
+                return
+            } else {
+                call.success(["success": metadata!.dictionaryRepresentation()])
+            }
+            
         }
     }
     
@@ -65,23 +68,24 @@ public class FirebaseStorage: CAPPlugin{
         
         if(filePath == nil || fileRef == nil) {
             call.error("filePath or fileRef is missing")
+            return
         }
-
+        
         let storageRef = storage.reference()
-
+        
         // File located on disk
         let localUrl = URL(string: filePath!)!
-
+        
         // Create a reference to the file you want to upload
         let downloadRef = storageRef.child(fileRef!)
         
         // Download to the local filesystem
         downloadRef.write(toFile: localUrl) { url, error in
-          if let error = error {
-            call.error(error.localizedDescription)
-          } else {
-            call.success(["success": url as Any])
-          }
+            if let error = error {
+                call.error(error.localizedDescription)
+            } else {
+                call.success(["success": true])
+            }
         }
     }
 }
