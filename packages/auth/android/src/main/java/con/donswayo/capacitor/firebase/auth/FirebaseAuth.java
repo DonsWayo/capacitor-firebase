@@ -13,7 +13,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
-
 import java.util.concurrent.Executor;
 
 import static android.content.ContentValues.TAG;
@@ -34,9 +33,9 @@ public class FirebaseAuth extends Plugin {
     }
 
     @PluginMethod
-    public void initFirebaseAuth(PluginCall call) {
+    public void initAuth(PluginCall call) {
         mAuth = com.google.firebase.auth.FirebaseAuth.getInstance();
-        this.onAuthStateChanged();
+        //this.onAuthStateChanged();
         call.success();
     }
 
@@ -51,19 +50,31 @@ public class FirebaseAuth extends Plugin {
         }
 
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener( this.bridge.getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            JSObject userData = new JSObject();
+                            userData.put("uid", user.getUid());
+                            userData.put("displayName", user.getDisplayName());
+                            userData.put("email", user.getEmail());
+                            userData.put("phoneNumber", user.getPhoneNumber());
+                            userData.put("photoUrl", user.getPhotoUrl());
+                            userData.put("provideId", user.getProviderId());
+                            userData.put("isAnonymous", user.isAnonymous());
+
                             JSObject ret = new JSObject();
-                            ret.put("user", mAuth.getCurrentUser());
+                            ret.put("success", true);
+                            ret.put("user", userData);
                             call.success(ret);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            call.error("createUserWithEmail:failure", task.getException());
+                            call.error(task.getException().getMessage());
                         }
                     }
                 });
@@ -81,15 +92,27 @@ public class FirebaseAuth extends Plugin {
 
 
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this.bridge.getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            JSObject userData = new JSObject();
+                            userData.put("uid", user.getUid());
+                            userData.put("displayName", user.getDisplayName());
+                            userData.put("email", user.getEmail());
+                            userData.put("phoneNumber", user.getPhoneNumber());
+                            userData.put("photoUrl", user.getPhotoUrl());
+                            userData.put("provideId", user.getProviderId());
+                            userData.put("isAnonymous", user.isAnonymous());
+
                             JSObject ret = new JSObject();
-                            ret.put("user", mAuth.getCurrentUser());
+                            ret.put("success", true);
+                            ret.put("user", userData);
                             call.success(ret);
                         } else {
-                            call.error("signInWithEmail:failure", task.getException());
+                            call.error(task.getException().getMessage());
                         }
                     }
                 });

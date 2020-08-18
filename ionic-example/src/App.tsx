@@ -50,7 +50,7 @@ const App: React.FC = () => {
     FirebaseAnalytics.initAnalytics();
     FirebaseStorage.initStorage();
     FirebaseFirestore.initFirestore();
-    //FirebaseAuth.initAuth();
+    FirebaseAuth.initAuth();
   }
 
   useEffect(() => {

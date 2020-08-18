@@ -505,7 +505,7 @@ public class FirebaseFirestore extends Plugin {
                         }
                     } else {
                         Log.d(TAG, "get failed with ", task.getException());
-                        call.error("get failed with ", task.getException());
+                        call.error(task.getException().getMessage());
                     }
                 }
             });
@@ -521,7 +521,7 @@ public class FirebaseFirestore extends Plugin {
             ret.put("docs", task.getResult());
             call.success(ret);
         } else {
-            call.error("Error getting documents: ", task.getException());
+            call.error(task.getException().getMessage());
         }
     }
 

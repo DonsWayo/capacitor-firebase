@@ -27,6 +27,7 @@ public class MainActivity extends BridgeActivity {
       add(FirebaseFirestore.class);
       add(FirebaseCrashlytics.class);
       add(FirebaseStorage.class);
+      add(FirebaseAuth.class);
     }});
   }
 }

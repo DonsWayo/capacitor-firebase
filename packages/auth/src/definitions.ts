@@ -8,6 +8,7 @@ declare module '@capacitor/core' {
 
 export interface FirebaseAuthPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
+  initAuth(): Promise<boolean>
   createUserWithEmailAndPassword(options: { email: string, password: string }): Promise<any>
   signInWithEmailAndPassword(options: { email: string, password: string }): Promise<any>
   onAuthStateChanged(): Observable<any>;
