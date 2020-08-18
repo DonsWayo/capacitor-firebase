@@ -12,7 +12,7 @@ import {
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, lockClosedOutline, lockClosedSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -42,16 +42,16 @@ const appPages: AppPage[] = [
     mdIcon: heartSharp
   },
   {
-    title: 'Archived',
-    url: '/page/Archived',
+    title: 'Crashlytics',
+    url: '/page/Crashlytics',
     iosIcon: archiveOutline,
     mdIcon: archiveSharp
   },
   {
-    title: 'Trash',
-    url: '/page/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
+    title: 'Auth',
+    url: '/page/Auth',
+    iosIcon: lockClosedOutline,
+    mdIcon: lockClosedSharp
   },
   {
     title: 'Spam',

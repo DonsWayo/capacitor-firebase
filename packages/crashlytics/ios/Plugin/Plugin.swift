@@ -15,20 +15,41 @@ public class FirebaseCrashlytics: CAPPlugin {
     }
     
     @objc func setCustomValue(_ call: CAPPluginCall) {
-        let options = call.getObject("options") ?? nil
+        let forKey = call.getString("forKey") ?? nil
+        let type = call.getString("type") ?? "string"
         
-        if options == nil {
-            call.error("customValue is missing")
+        if forKey == nil {
+            call.error("forKey is missing")
             return
         }
         
-        let forKey = options!["forKey"] ?? nil
-        let value = options!["value"] ?? nil
-        
-        if forKey == nil  || value == nil {
-            call.error("forKey or value is missing")
+        switch type {
+        case "boolean":
+            let value = call.getBool("value")
+            if value == nil {
+                call.error("value is missing!")
+                return
+            }
+            Crashlytics.crashlytics().setCustomValue(value as Any, forKey: forKey!)
+        case "int":
+            let value = call.getInt("value")
+            if value == nil {
+                call.error("value is missing!")
+                return
+            }
+            Crashlytics.crashlytics().setCustomValue(value as Any, forKey: forKey!)
+        case "double":
+            let value = call.getDouble("value")
+            if value == nil {
+                call.error("value is missing!")
+                return
+            }
+            Crashlytics.crashlytics().setCustomValue(value as Any, forKey: forKey!)
+        default:
+            let value = call.getString("value")
+            Crashlytics.crashlytics().setCustomValue(value as Any, forKey: forKey!)
         }
-        Crashlytics.crashlytics().setCustomValue(value as Any, forKey: forKey as! String)
+        
         
         call.success()
     }

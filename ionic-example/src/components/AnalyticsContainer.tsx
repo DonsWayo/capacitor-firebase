@@ -7,7 +7,7 @@ const { FirebaseAnalytics } = Plugins;
 const AnalyticsContainer: React.FC = () => {
 
     function logEvent() {
-        FirebaseAnalytics.logEvent('lol');
+        FirebaseAnalytics.logEvent({name: "lol", params: {one: "2"}});
     }
     return (
       <div className="container">

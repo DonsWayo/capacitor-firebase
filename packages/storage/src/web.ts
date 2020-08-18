@@ -33,12 +33,13 @@ export class FirebaseStorageWeb extends WebPlugin implements FirebaseStoragePlug
     return options;
   }
 
-  async getDownloadUrl(ref: string): Promise<{ url: string }> {
+  async getDownloadUrl(options: {ref: string}): Promise<{ success: boolean, url: string }> {
     try {
+      const { ref } = options;
       return new Promise(async (resolve) => {
         const storageRef = this.storage.ref();
         const url = await storageRef.child(ref).getDownloadURL();
-        resolve({url});
+        resolve({ success: true, url});
       })
     } catch (error) {
       return error;

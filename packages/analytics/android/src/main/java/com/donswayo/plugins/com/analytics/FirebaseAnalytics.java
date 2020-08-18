@@ -64,7 +64,7 @@ public class FirebaseAnalytics extends Plugin {
     public void logEvent(PluginCall call) {
         try {
             String name = call.getString("name");
-            JSObject params = call.getObject("address", new JSObject());
+            JSObject params = call.getObject("params", new JSObject());
 
             if (mFirebaseAnalytics == null) {
                 call.error("Analytics are not init");

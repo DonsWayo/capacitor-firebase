@@ -12,7 +12,7 @@ public class FirebaseAuth: CAPPlugin {
         let email = call.getString("email") ?? nil
         let password = call.getString("password") ?? nil
         
-        if email != nil || password != nil {
+        if email == nil || password == nil {
             call.reject("Email or password is missing")
             return
         }
@@ -21,8 +21,17 @@ public class FirebaseAuth: CAPPlugin {
             if error != nil {
                 call.error(error?.localizedDescription ?? "Error on create user with email and password")
             }
+            let user = authResult!.user
             call.success([
-                "success": authResult as Any
+                "success": true,
+                "uid": user.uid,
+                "providerID": user.providerID,
+                "email": user.email ?? "",
+                "displayName": user.displayName ?? "",
+                "isAnonymous": user.isAnonymous,
+                "isEmailVerified": user.isEmailVerified,
+                "phoneNumber": user.phoneNumber ?? "",
+                "photoURL": user.photoURL ?? ""
             ])
         }
         
@@ -33,7 +42,7 @@ public class FirebaseAuth: CAPPlugin {
         let email = call.getString("email") ?? nil
         let password = call.getString("password") ?? nil
         
-        if email != nil || password != nil {
+        if email == nil || password == nil {
             call.reject("Email or password is missing")
             return
         }
@@ -42,8 +51,18 @@ public class FirebaseAuth: CAPPlugin {
             if error != nil {
                 call.error(error?.localizedDescription ?? "Error on create user with email and password")
             }
+            let user = authResult!.user
+            print(user)
             call.success([
-                "success": authResult as Any
+                "success": true,
+                "uid": user.uid,
+                "providerID": user.providerID,
+                "email": user.email ?? "",
+                "displayName": user.displayName ?? "",
+                "isAnonymous": user.isAnonymous,
+                "isEmailVerified": user.isEmailVerified,
+                "phoneNumber": user.phoneNumber ?? "",
+                "photoURL": user.photoURL ?? ""
             ])
         }
         

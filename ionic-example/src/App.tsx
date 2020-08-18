@@ -25,13 +25,14 @@ import "@capacitor-plugin-firebase/app";
 import "@capacitor-plugin-firebase/analytics";
 import "@capacitor-plugin-firebase/storage";
 import "@capacitor-plugin-firebase/firestore";
+import "@capacitor-plugin-firebase/auth";
 import { Plugins } from "@capacitor/core";
 
 
 /* Theme variables */
 import './theme/variables.css';
 
-const { FirebaseApp, FirebaseAnalytics, FirebaseStorage, FirebaseFirestore } = Plugins;
+const { FirebaseApp, FirebaseAnalytics, FirebaseStorage, FirebaseFirestore, FirebaseAuth } = Plugins;
 
 const App: React.FC = () => {
 
@@ -49,6 +50,7 @@ const App: React.FC = () => {
     FirebaseAnalytics.initAnalytics();
     FirebaseStorage.initStorage();
     FirebaseFirestore.initFirestore();
+    //FirebaseAuth.initAuth();
   }
 
   useEffect(() => {

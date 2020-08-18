@@ -67,9 +67,6 @@ public class FirebaseCrashlytics extends Plugin {
             case "double":
                 mFirebaseCrashlytics.setCustomKey(options.getString("forKey"), options.getDouble("value"));
                 break;
-            case "long":
-                mFirebaseCrashlytics.setCustomKey(options.getString("forKey"), options.getLong("value"));
-                break;
             default:
                 mFirebaseCrashlytics.setCustomKey(options.getString("forKey"), options.getString("value"));
                 break;

@@ -26,7 +26,10 @@ public class FirebaseStorage: CAPPlugin{
                 if let error = error {
                     call.error(error.localizedDescription)
                 } else {
-                    call.success(["url": url as Any])
+                    call.success([
+                        "success": true,
+                        "url": url?.absoluteString as Any
+                    ])
                 }
             }
         } else {
@@ -37,15 +40,19 @@ public class FirebaseStorage: CAPPlugin{
     @objc func uploadFile(_ call: CAPPluginCall) {
         let filePath = call.getString("filePath") ?? nil
         let fileRef = call.getString("fileRef") ?? nil
+        let fileName = call.getString("fileName") ?? nil
         
-        if(filePath == nil || fileRef == nil) {
-            call.error("filePath or fileRef is missing")
+        if(filePath == nil || fileRef == nil || fileName == nil) {
+            call.error("filePath or fileRef or fileName is missing")
+            return
         }
         
         let storageRef = storage.reference()
         
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+
         // File located on disk
-        let localFile = URL(string: filePath!)!
+        let localFile = URL(fileURLWithPath: documentsPath + filePath! + "/" + fileName!)
         
         // Create a reference to the file you want to upload
         let riversRef = storageRef.child(fileRef!)
@@ -56,7 +63,10 @@ public class FirebaseStorage: CAPPlugin{
                 call.error(error.localizedDescription)
                 return
             } else {
-                call.success(["success": metadata!.dictionaryRepresentation()])
+                call.success([
+                    "success": true,
+                    "metadata": metadata!.dictionaryRepresentation()
+                ])
             }
             
         }
@@ -65,16 +75,20 @@ public class FirebaseStorage: CAPPlugin{
     @objc func downloadFile(_ call: CAPPluginCall) {
         let filePath = call.getString("filePath") ?? nil
         let fileRef = call.getString("fileRef") ?? nil
+        let fileName = call.getString("fileName") ?? nil
         
-        if(filePath == nil || fileRef == nil) {
-            call.error("filePath or fileRef is missing")
+        if(filePath == nil || fileRef == nil || fileName == nil) {
+            call.error("filePath or fileRef or fileName is missing")
             return
         }
         
         let storageRef = storage.reference()
         
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+
         // File located on disk
-        let localUrl = URL(string: filePath!)!
+        let localUrl = URL(fileURLWithPath: documentsPath + filePath! + "/" + fileName!)
+        print(localUrl)
         
         // Create a reference to the file you want to upload
         let downloadRef = storageRef.child(fileRef!)

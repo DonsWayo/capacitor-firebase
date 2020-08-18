@@ -2,6 +2,8 @@ import React from 'react';
 import AnalyticsContainer from './AnalyticsContainer';
 import StorageContainer from './StorageContainer';
 import FirestoreContainer from './FirestoreContainer';
+import CrashlyticsContainer from './CrashlyticsContainer';
+import AuthContainer from './AuthContainer';
 
 interface ContainerProps {
   name: string;
@@ -22,6 +24,16 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   if(name === 'Storage') {
     return (
       <StorageContainer/>
+    );
+  }
+  if(name === 'Crashlytics') {
+    return (
+      <CrashlyticsContainer/>
+    );
+  }
+  if(name === 'Auth') {
+    return (
+      <AuthContainer/>
     );
   }
   else {

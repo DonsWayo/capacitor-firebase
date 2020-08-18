@@ -14,7 +14,7 @@ const AuthContainer: React.FC = () => {
     }
 
     async function createUserWithEmailAndPassword() {
-        const email = 'pepe@pepe.com'
+        const email = 'pepasase@pessspe.com'
         const password = '123456'
         const auth = await FirebaseAuth.createUserWithEmailAndPassword({email, password})
         console.log(auth)

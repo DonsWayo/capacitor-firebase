@@ -7,27 +7,17 @@ const { FirebaseStorage, Filesystem } = Plugins;
 const StorageContainer: React.FC = () => {
 
   async function getDownloadUrl() {
-    const url = await FirebaseStorage.getDownloadUrl('images/coin.png');
+    const url = await FirebaseStorage.getDownloadUrl({ref: 'images/coin.png'});
     console.log(url);
   }
 
   async function downloadFile() {
-    const uri = await Filesystem.getUri({
-      directory: FilesystemDirectory.Documents,
-      path: 'image.png'
-    });
-    console.log(uri)
-    const download = await FirebaseStorage.downloadFile({ filePath: uri.uri, fileRef: 'images/coin.png' });
+    const download = await FirebaseStorage.downloadFile({ filePath: '/images', fileRef: 'images/coin.png', fileName: "image.png"});
     console.log(download)
   }
 
   async function uploadFile() {
-    const uri = await Filesystem.getUri({
-      directory: FilesystemDirectory.Documents,
-      path: 'image.png'
-    });
-    console.log(uri)
-    const download = await FirebaseStorage.uploadFile({ filePath: uri.uri, fileRef: 'images/coin-ionic.png' });
+    const download = await FirebaseStorage.uploadFile({ filePath: '/images', fileName: "image.png", fileRef: 'imaginaios.png' });
     console.log(download)
   }
 
@@ -39,8 +29,9 @@ const StorageContainer: React.FC = () => {
   return (
     <div className="container">
       <input type="file" onChange={(e) => onChangeFile(e)} />
+      <IonButton onClick={getDownloadUrl} expand="full">Download url</IonButton>
       <IonButton onClick={downloadFile} expand="full">Download file (native)</IonButton>
-      <IonButton onClick={uploadFile} expand="full">Upload file (native)</IonButton>
+      <IonButton onClick={uploadFile} expand="full">Up file (native)</IonButton>
     </div>
   );
 };

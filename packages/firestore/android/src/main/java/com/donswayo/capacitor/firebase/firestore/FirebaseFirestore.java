@@ -60,6 +60,7 @@ public class FirebaseFirestore extends Plugin {
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
+
                             JSObject ret = new JSObject();
                             ret.put("doc", documentReference);
                             call.success(ret);
