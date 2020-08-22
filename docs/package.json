@@ -10,7 +10,8 @@
   "repository": "https://github.com/DonsWayo/capacitor-firebase/docs",
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "yarn && npx vuepress build docs"
+    "build": "yarn && npx vuepress build docs",
+    "deploy": "yarn build && firebase deploy --only hosting:capacitor-firebase"
   },
   "license": "MIT",
   "devDependencies": {

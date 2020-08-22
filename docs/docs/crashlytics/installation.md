@@ -28,7 +28,7 @@ npm i @capacitor-plugin-firebase/crashlytics
  
 ::: tab iOS
 ```bash
-cd ios/ && pod install
+Nothing more on iOS
 ```
 :::
  

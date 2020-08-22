@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "capacitor-firebase",
+    "public": "./docs/.vuepress/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
