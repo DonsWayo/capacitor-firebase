@@ -8,6 +8,6 @@ export interface FirebaseCloudMessagingPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
   subscribeToTopic(options: { name: string }): Promise<{ message: string }>;
   unsubscribeFromTopic(options: { name: string }): Promise<{ message: string }>;
-  getToken(): Promise<{ token: string }>;
-  initMessaging(key?: string): Promise<boolean>;
+  getToken(): Promise<string>;
+  initMessaging(key?: string, webContents?: any): Promise<boolean> | void;
 }
