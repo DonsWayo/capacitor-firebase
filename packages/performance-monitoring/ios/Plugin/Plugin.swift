@@ -8,10 +8,7 @@ import Capacitor
 @objc(FirebasePerformanceMonitoring)
 public class FirebasePerformanceMonitoring: CAPPlugin {
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.success([
-            "value": value
-        ])
+    @objc func performance(_ call: CAPPluginCall) {
+        call.success()
     }
 }

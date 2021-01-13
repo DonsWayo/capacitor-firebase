@@ -5,6 +5,5 @@ declare module '@capacitor/core' {
 }
 
 export interface FirebasePerformanceMonitoringPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
-  initPerformanceMonitoring(): Promise<boolean>;
+  performance(): Promise<boolean>;
 }

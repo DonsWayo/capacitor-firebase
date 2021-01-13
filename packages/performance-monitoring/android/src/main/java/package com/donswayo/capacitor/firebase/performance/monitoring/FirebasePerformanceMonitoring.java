@@ -10,11 +10,7 @@ import com.getcapacitor.PluginMethod;
 public class FirebasePerformanceMonitoring extends Plugin {
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
-        JSObject ret = new JSObject();
-        ret.put("value", value);
-        call.success(ret);
+    public void performance(PluginCall call) {
+        call.success();
     }
 }
