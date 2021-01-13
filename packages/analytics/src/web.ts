@@ -1,12 +1,10 @@
 import { WebPlugin } from '@capacitor/core';
 import { FirebaseAnalyticsPlugin } from './definitions';
-
-const FIREBASECDN = "https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js";
+import firebase from 'firebase/app'
+import 'firebase/analytics'
 
 declare var window: any;
 export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalyticsPlugin {
-
-  analytics: any = null;
 
   constructor() {
     super({
@@ -15,12 +13,12 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
     });
   }
 
-  async initAnalytics(): Promise<boolean> {
-    console.log('Init Analitycs')
+  async analytics(): Promise<boolean> {
     try {
-      await this.addFirebaseScript();
       return new Promise((resolve) => {
-        this.analytics = window.firebase.analytics();
+        firebase.analytics()
+        firebase.analytics().setAnalyticsCollectionEnabled(true)
+        console.log(firebase.app().name)
         resolve(true);
       });
     } catch (error) {
@@ -32,7 +30,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
   setUserId(options: { userId: string; }): Promise<void> {
     return new Promise(async (resolve, reject) => {
 
-      if (!this.analytics) {
+      if (!firebase.analytics()) {
         reject("Analytics are not init");
       }
 
@@ -42,7 +40,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
         reject("userId is missing");
       }
 
-      this.analytics.setUserId(userId);
+      firebase.analytics().setUserId(userId);
       resolve();
     });
   }
@@ -62,7 +60,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
   logEvent(options: { name: string; params: object }): Promise<void> {
     return new Promise(async (resolve, reject) => {
 
-      if (!this.analytics) {
+      if (!firebase.analytics()) {
         reject("Analytics are not init");
       }
 
@@ -71,24 +69,10 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
       if (!name && !params) {
         reject("name or params are missing");
       }
-
-      this.analytics.logEvent(name, params);
+      firebase.analytics().logEvent(name, params);
       resolve();
     });
   }
-
-  private addFirebaseScript(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const element = window.document.querySelector("head");
-      const file = window.document.createElement("script");
-      file.type = "text/javascript";
-      file.src = FIREBASECDN;
-      file.onload = resolve;
-      file.onerror = reject;
-      element.appendChild(file);
-    });
-  }
-
 }
 
 const FirebaseAnalytics = new FirebaseAnalyticsWeb();

@@ -35,7 +35,7 @@ public class FirebaseAnalytics extends Plugin {
     }
 
     @PluginMethod
-    public void initAnalytics(PluginCall call) {
+    public void analytics(PluginCall call) {
         mFirebaseAnalytics = com.google.firebase.analytics.FirebaseAnalytics.getInstance(this.bridge.getActivity());
         call.success();
     }

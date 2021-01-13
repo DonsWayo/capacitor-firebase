@@ -9,7 +9,7 @@ import FirebaseAnalytics
 @objc(FirebaseAnalytics)
 public class FirebaseAnalytics: CAPPlugin {
 
-    @objc func initAnalytics(_ call: CAPPluginCall) {
+    @objc func analytics(_ call: CAPPluginCall) {
         call.success()
     }
 
