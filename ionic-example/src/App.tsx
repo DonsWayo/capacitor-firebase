@@ -47,10 +47,9 @@ const App: React.FC = () => {
       appId: process.env.REACT_APP_appId || "",
       measurementId: process.env.REACT_APP_measurementId || ""
     });
-    FirebaseAnalytics.initAnalytics();
-    FirebaseStorage.initStorage();
-    FirebaseFirestore.initFirestore();
-    FirebaseAuth.initAuth();
+    FirebaseAnalytics.analytics();
+   // FirebaseStorage.initStorage();
+   // FirebaseAuth.initAuth();
   }
 
   useEffect(() => {
