@@ -6,7 +6,6 @@ declare module '@capacitor/core' {
 
 export interface FirebaseStoragePlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
-  initStorage(): Promise<boolean>
   getDownloadUrl(options: {ref: string} ): Promise<{ success: boolean, url: string }> ;
   uploadFile(options: { filePath: string, fileRef: string, fileName: string }): Promise<any>;
   uploadFileWeb(options: { ref: string, file: File | Blob }):  Promise<any>;

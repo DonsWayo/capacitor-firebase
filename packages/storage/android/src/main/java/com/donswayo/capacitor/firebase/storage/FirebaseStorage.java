@@ -28,7 +28,7 @@ import java.io.IOException;
         Manifest.permission.WRITE_EXTERNAL_STORAGE
 })
 public class FirebaseStorage extends Plugin {
-    private com.google.firebase.storage.FirebaseStorage storage;
+    private com.google.firebase.storage.FirebaseStorage storage = com.google.firebase.storage.FirebaseStorage.getInstance();
 
     @PluginMethod
     public void echo(PluginCall call) {
@@ -37,12 +37,6 @@ public class FirebaseStorage extends Plugin {
         JSObject ret = new JSObject();
         ret.put("value", value);
         call.success(ret);
-    }
-
-    @PluginMethod
-    public void initStorage(PluginCall call) {
-        storage = com.google.firebase.storage.FirebaseStorage.getInstance();
-        call.success();
     }
 
     @PluginMethod

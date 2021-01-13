@@ -11,11 +11,6 @@ public class FirebaseStorage: CAPPlugin{
     
     let storage = Storage.storage()
     
-    
-    @objc func initStorage(_ call: CAPPluginCall) {
-        call.success()
-    }
-    
     @objc func getDownloadUrl(_ call: CAPPluginCall) {
         let ref = call.getString("ref") ?? nil
         let storageRef = storage.reference()
