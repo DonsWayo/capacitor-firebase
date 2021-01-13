@@ -26,7 +26,8 @@ import static android.content.ContentValues.TAG;
 
 @NativePlugin
 public class FirebaseFirestore extends Plugin {
-    private com.google.firebase.firestore.FirebaseFirestore db;
+    private com.google.firebase.firestore.FirebaseFirestore db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
+    
 
 
     @PluginMethod
@@ -36,12 +37,6 @@ public class FirebaseFirestore extends Plugin {
         JSObject ret = new JSObject();
         ret.put("value", value);
         call.success(ret);
-    }
-
-    @PluginMethod
-    public void initFirestore(PluginCall call) {
-        db = com.google.firebase.firestore.FirebaseFirestore.getInstance();
-        call.success();
     }
 
     @PluginMethod

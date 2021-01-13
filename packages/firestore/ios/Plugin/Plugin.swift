@@ -15,12 +15,6 @@ public class FirebaseFirestore: CAPPlugin {
     
     let db = Firestore.firestore()
     
-    
-    @objc func initFirestore(_ call: CAPPluginCall) {
-        call.success()
-    }
-    
-    
     @objc func addDocument(_ call: CAPPluginCall) {
         let collection = call.getString("collection") ?? nil
         let document = call.getObject("document") ?? nil

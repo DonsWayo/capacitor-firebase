@@ -8,6 +8,7 @@ export default {
     name: 'capacitorPlugin', // TODO: change this
     globals: {
       '@capacitor/core': 'capacitorExports',
+      'firebase/app': 'firebase'
     },
     sourcemap: true,
   },
