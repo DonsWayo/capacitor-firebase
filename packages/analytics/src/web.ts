@@ -13,7 +13,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
     });
   }
 
-  async analytics(): Promise<boolean> {
+  async init(): Promise<boolean> {
     try {
       return new Promise((resolve) => {
         firebase.analytics()
