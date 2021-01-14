@@ -12,7 +12,7 @@ export class FirebasePerformanceMonitoringWeb extends WebPlugin implements Fireb
     });
   }
 
-  async performance(): Promise<boolean> {
+  async init(): Promise<boolean> {
     console.log('Init Performance Monitoring')
     try {
       return new Promise((resolve) => {

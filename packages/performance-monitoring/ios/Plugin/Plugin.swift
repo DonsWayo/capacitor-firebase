@@ -8,7 +8,7 @@ import Capacitor
 @objc(FirebasePerformanceMonitoring)
 public class FirebasePerformanceMonitoring: CAPPlugin {
 
-    @objc func performance(_ call: CAPPluginCall) {
+    @objc func init(_ call: CAPPluginCall) {
         call.success()
     }
 }
