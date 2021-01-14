@@ -5,7 +5,7 @@ declare module '@capacitor/core' {
 }
 
 export interface FirebaseAppPlugin {
-  initFirebase(options: FirebaseInitConfig): Promise<boolean>;
+  init(options: FirebaseInitConfig): Promise<boolean>;
 }
 
 export interface FirebaseInitConfig {

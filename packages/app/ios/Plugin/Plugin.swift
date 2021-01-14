@@ -8,7 +8,7 @@ import Capacitor
 @objc(FirebaseApp)
 public class FirebaseApp: CAPPlugin {
 
-    @objc func initFirebase(_ call: CAPPluginCall) {
+    @objc func init(_ call: CAPPluginCall) {
         call.success()
     }
 }

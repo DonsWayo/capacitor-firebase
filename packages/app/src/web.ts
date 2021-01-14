@@ -13,7 +13,7 @@ export class FirebaseAppWeb extends WebPlugin implements FirebaseAppPlugin {
     });
   }
 
-  async initFirebase(config: FirebaseInitConfig): Promise<boolean> {
+  async init(config: FirebaseInitConfig): Promise<boolean> {
     try {
       return new Promise((resolve, reject) => {
         if (firebase.apps.length > 1) {
