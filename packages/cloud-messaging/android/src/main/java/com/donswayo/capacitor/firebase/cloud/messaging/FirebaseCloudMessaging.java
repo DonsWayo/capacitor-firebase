@@ -23,12 +23,8 @@ import static android.content.ContentValues.TAG;
 public class FirebaseCloudMessaging extends Plugin {
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
-        JSObject ret = new JSObject();
-        ret.put("value", value);
-        call.success(ret);
+    public void init(PluginCall call) {
+        call.success();
     }
 
     @PluginMethod

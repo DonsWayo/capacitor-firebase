@@ -10,13 +10,10 @@ import FirebaseInstanceID
 @objc(FirebaseCloudMessaging)
 public class FirebaseCloudMessaging: CAPPlugin, MessagingDelegate {
     
-    @objc func initFirebaseMessaging(_ call: CAPPluginCall) {
+    @objc func init(_ call: CAPPluginCall) {
         Messaging.messaging().delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRegisterWithToken(notification:)), name: Notification.Name(CAPNotifications.DidRegisterForRemoteNotificationsWithDeviceToken.name()), object: nil)
-        
-        call.success([
-            "success": true
-        ])
+        call.success()
     }
     
     @objc func didRegisterWithToken(notification: NSNotification) {

@@ -9,5 +9,5 @@ export interface FirebaseCloudMessagingPlugin {
   subscribeToTopic(options: { name: string }): Promise<{ message: string }>;
   unsubscribeFromTopic(options: { name: string }): Promise<{ message: string }>;
   getToken(): Promise<string>;
-  initMessaging(key?: string, webContents?: any): Promise<boolean> | void;
+  init(key?: string, webContents?: any): Promise<boolean> | void;
 }

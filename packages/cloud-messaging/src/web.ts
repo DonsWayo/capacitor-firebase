@@ -24,7 +24,7 @@ export class FirebaseCloudMessagingWeb extends WebPlugin implements FirebaseClou
   }
 
 
-  async initMessaging(key: string): Promise<boolean> {
+  async init(key: string): Promise<boolean> {
     console.log('Init Analitycs')
     try {
       return new Promise((resolve) => {
