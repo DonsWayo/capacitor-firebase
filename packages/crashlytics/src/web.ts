@@ -8,7 +8,7 @@ export class FirebaseCrashlyticsWeb extends WebPlugin implements FirebaseCrashly
       platforms: ['web'],
     });
   }
-  initCrashlytics(): Promise<any> {
+  init(): Promise<any> {
     return new Promise((reject) => {
       reject("Crashlytics not work on web")
     });

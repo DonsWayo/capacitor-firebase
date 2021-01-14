@@ -17,7 +17,7 @@ public class FirebaseCrashlytics extends Plugin {
     private com.google.firebase.crashlytics.FirebaseCrashlytics mFirebaseCrashlytics;
 
     @PluginMethod
-    public void initCrashlytics(PluginCall call) {
+    public void init(PluginCall call) {
         mFirebaseCrashlytics = com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance();
         call.success();
     }

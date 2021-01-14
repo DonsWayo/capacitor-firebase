@@ -8,6 +8,10 @@ import FirebaseCrashlytics
  */
 @objc(FirebaseCrashlytics)
 public class FirebaseCrashlytics: CAPPlugin {
+
+    @objc func init(_ call: CAPPluginCall) {
+        call.success()
+    }
     
     @objc func testCrash(_ call: CAPPluginCall) {
         call.success()
